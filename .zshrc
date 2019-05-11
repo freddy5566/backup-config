@@ -5,7 +5,7 @@ DEFAULT_USER=`whoami`
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/Freddy/.oh-my-zsh
+export ZSH=/Users/jamfly/.oh-my-zsh
 
 # color
 export TERM="xterm-256color"
@@ -26,7 +26,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable vcs vi_mode)
 # 右側
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram virtualenv docker_machine)
 # 若當前登入的帳號為你的帳號 xxx，就不用特別顯示出來
-DEFAULT_USER="Freddy"
+DEFAULT_USER="jamfly"
 # 使用 nerd font 時可以顯示更多 icon。詳情請參考 powerlevel9k wiki
 POWERLEVEL9K_MODE='nerdfont-complete'
 
@@ -79,7 +79,7 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-apple-touchbar)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -127,8 +127,10 @@ _COLUMNS=$(tput cols)
 _MESSAGE="investigates allegations of criminal copyright infringement"
 y=$(( ( $_COLUMNS - ${#_MESSAGE} )  / 2 ))
 
-export NVM_DIR="/Users/Freddy/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
@@ -138,8 +140,11 @@ alias appcode="open -a AppCode.app"
 
 # added gvm command to shell
 source "$HOME/.gvm/scripts/gvm"
+
 # directory path for GO
 export GOPATH=$HOME/gopath
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
